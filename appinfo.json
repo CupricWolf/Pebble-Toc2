@@ -1,0 +1,39 @@
+{
+    "versionLabel": "2.0.0",
+    "uuid": "0a88492a-12b6-4c72-8bd5-6e01993f0a58",
+    "appKeys": {},
+    "longName": "Pebble-Toc v2.0",
+    "versionCode": 2,
+    "capabilities": [
+        ""
+    ],
+    "shortName": "Peb-Toc",
+    "companyName": "CupricWolf",
+    "watchapp": {
+        "watchface": true
+    },
+    "resources": {
+        "media": [
+            {
+                "type": "png-trans",
+                "name": "IMAGE_HAND_HOUR",
+                "file": "images/Minute_Rotor.png"
+            },
+            {
+                "type": "png-trans",
+                "name": "IMAGE_HAND_HOUR",
+                "file": "images/Hour_Rotor.png"
+            },
+            {
+                "type": "png",
+                "name": "IMAGE_BACKGROUND",
+                "file": "images/Background.png"
+            },
+            {
+                "type": "png",
+                "name": "IMAGE_MENU_ICON",
+                "file": "images/Pebble-Toc_Menu_Icon.png"
+            }
+        ]
+    }
+}
