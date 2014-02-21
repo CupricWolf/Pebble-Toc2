@@ -1,4 +1,5 @@
 #include <pebble.h>
+// This is the restore point now
 
 Window *main_window;
 
