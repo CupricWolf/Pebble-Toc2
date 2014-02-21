@@ -16,7 +16,7 @@
         "media": [
             {
                 "type": "png",
-                "name": "IMAGE_HAND_HOUR",
+                "name": "IMAGE_HOUR_TRAIL",
                 "file": "images/Hour_Rotor.png"
             },
             {
@@ -32,7 +32,7 @@
             },
             {
                 "type": "png",
-                "name": "IMAGE_HAND_MINUTE",
+                "name": "IMAGE_MINUTE_TRAIL",
                 "file": "images/Minute_Rotor.png"
             }
         ]
