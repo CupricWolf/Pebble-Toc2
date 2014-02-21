@@ -15,25 +15,15 @@
     "resources": {
         "media": [
             {
+                "menuIcon": true,
                 "type": "png",
-                "name": "IMAGE_HAND_MINUTE",
-                "file": "images/Minute_Rotor.png"
-            },
-            {
-                "type": "png",
-                "name": "IMAGE_HAND_HOUR",
-                "file": "images/Hour_Rotor.png"
+                "name": "IMAGE_MENU_ICON",
+                "file": "images/Pebble-Toc_Menu_Icon.png"
             },
             {
                 "type": "png",
                 "name": "IMAGE_BACKGROUND",
                 "file": "images/Background.png"
-            },
-            {
-                "menuIcon": true,
-                "type": "png",
-                "name": "IMAGE_MENU_ICON",
-                "file": "images/Pebble-Toc_Menu_Icon.png"
             }
         ]
     }
