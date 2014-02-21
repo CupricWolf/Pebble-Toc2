@@ -16,13 +16,13 @@
         "media": [
             {
                 "type": "png",
-                "name": "IMAGE_HAND_MINUTE",
-                "file": "images/Minute_Rotor.png"
-            },
-            {
-                "type": "png-trans",
                 "name": "IMAGE_HAND_HOUR",
                 "file": "images/Hour_Rotor.png"
+            },
+            {
+                "type": "png",
+                "name": "IMAGE_BACKGROUND",
+                "file": "images/Background.png"
             },
             {
                 "menuIcon": true,
@@ -32,8 +32,8 @@
             },
             {
                 "type": "png",
-                "name": "IMAGE_BACKGROUND",
-                "file": "images/Background.png"
+                "name": "IMAGE_HAND_MINUTE",
+                "file": "images/Minute_Rotor.png"
             }
         ]
     }
