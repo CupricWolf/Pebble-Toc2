@@ -75,8 +75,8 @@ void handle_init() {
   GRect hour_frame = layer_get_frame(bitmap_layer_get_layer((BitmapLayer *)hour_hand_layer));
   // The current images seem to look best if this frame is offset
   // one more pixel. Still not perfect though.
-  GRect new_hour_frame = GRect((144-hour_frame.size.w)/2 + 1,
-			       (168-hour_frame.size.h)/2 + 1,
+  GRect new_hour_frame = GRect((144-hour_frame.size.w)/2,
+			       (168-hour_frame.size.h)/2,
 			       hour_frame.size.w, hour_frame.size.h);
   APP_LOG(APP_LOG_LEVEL_DEBUG, "hour frame: %i, %i, %i, %i",
 	  hour_frame.origin.x, hour_frame.origin.y,
