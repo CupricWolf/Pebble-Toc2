@@ -15,4 +15,4 @@ In the examples below the red Pebble is displaying 12:00 and the black Pebble St
 ![Photo](/examples/example_1.png "This one reads 12:00") ![Photo](/examples/example_2.png "This one reads 10:10")
 
 ## Download:
-You can download the watchface ![here](/Pebble_TocV2.pbw) or you can view the raw file in the repository.
+You can download the watchface [here](/Pebble_TocV2.pbw?raw=true) or you can view the raw file in the repository.
