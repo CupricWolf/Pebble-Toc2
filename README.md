@@ -11,6 +11,6 @@ The position of the hands are given by the solid line between black and white.
 
 ## Examples:
 
-![Photo](/examples/example_1.png This one reads 12:00) ![Photo](/examples/example_2.png This one reads 10:10)
+![Photo](/examples/example_1.png "This one reads 12:00") ![Photo](/examples/example_2.png "This one reads 10:10")
 
 ## Download:
