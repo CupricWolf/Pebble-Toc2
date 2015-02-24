@@ -2,12 +2,12 @@
     "versionLabel": "2.2",
     "uuid": "0a88492a-12b6-4c72-8bd5-6e01993f0a58",
     "appKeys": {},
-    "longName": "Pebble-Toc v2.1",
+    "longName": "Toc for Pebble",
     "versionCode": 2,
     "capabilities": [
         ""
     ],
-    "shortName": "Peb-Toc",
+    "shortName": "Toc Pebble",
     "companyName": "CupricWolf",
     "watchapp": {
         "watchface": true
