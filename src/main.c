@@ -105,9 +105,9 @@ void handle_deinit() {
 
 	// Fairly sure casting a RotBitmapLayer to BitmapLayer won't
 	// fully destroy it, but it's the best we can do. :-(
-	rot_bitmap_layer_destroy((BitmapLayer *)hour_hand_layer);
+	rot_bitmap_layer_destroy(hour_hand_layer);
 	gbitmap_destroy(hour_hand_image);
-	rot_bitmap_layer_destroy((BitmapLayer *)minute_hand_layer);
+	rot_bitmap_layer_destroy(minute_hand_layer);
 	gbitmap_destroy(minute_hand_image);
 	gbitmap_destroy(background_image);
 	bitmap_layer_destroy(background_layer);
