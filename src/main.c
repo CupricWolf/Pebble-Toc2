@@ -1,5 +1,8 @@
 #include <pebble.h>
-		
+
+#define HOUR_VIBRATION_START 10
+#define HOUR_VIBRATION_END 23
+
 Window *window;
 
 BitmapLayer *background_layer;
@@ -10,13 +13,18 @@ GBitmap *background_image, *minute_hand_image, *hour_hand_image;
 void update_watch(struct tm *t){
 
 	long minute_hand_rotation = TRIG_MAX_ANGLE * (t->tm_min * 6) / 360;
-	long hour_hand_rotation = TRIG_MAX_ANGLE * (((t->tm_hour % 12) * 30) + (t->tm_min/2)) / 360;
+	long hour_hand_rotation = TRIG_MAX_ANGLE * (((t->tm_hour % 12) * 30) + (t->tm_min / 2)) / 360;
 	rot_bitmap_layer_set_angle(minute_hand_layer, minute_hand_rotation);
 	rot_bitmap_layer_set_angle(hour_hand_layer, hour_hand_rotation);
 
 	layer_mark_dirty(bitmap_layer_get_layer((BitmapLayer *)minute_hand_layer));
 	layer_mark_dirty(bitmap_layer_get_layer((BitmapLayer *)hour_hand_layer));
-
+	
+	if (t->tm_min == 0 // Make pebble vibrate on the hour at the top of each hour
+	 && t->tm_hour >= HOUR_VIBRATION_START
+	 && t->tm_hour <= HOUR_VIBRATION_END) {
+		vibes_double_pulse();
+	}
 }
 
 // Called once per second
