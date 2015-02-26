@@ -4,9 +4,10 @@
 // change this token for your project
 var setPebbleToken = 'ZECS';
 var uuid = "0a88492a-12b6-4c72-8bd5-6e01993f0a58";
-var version = "2.0";
+var version = "2.3";
 
 function versionCheck(uuid, version) {
+  console.log("Checking version.")
   var url = 'http://pblweb.com/api/v1/version/' + uuid + '.json?current=' + version;
   var req = new XMLHttpRequest();
   req.open('GET', url, true);
@@ -19,6 +20,7 @@ function versionCheck(uuid, version) {
         var newer = response.newer;
         if (newer) {
           Pebble.showSimpleNotificationOnPebble('New version!', 'A new version (' + version + ') of my amazing app is available.');
+          console.log("Newer version exists!")
         }
       }
     }
