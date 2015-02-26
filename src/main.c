@@ -28,18 +28,19 @@ void update_watch(struct tm *t){
 }
 
 static void tuple_changed_callback(const uint32_t key, const Tuple* tuple_new, const Tuple* tuple_old, void* context) {
+	int value = tuple_new->value->uint8;
 	switch (key) {
 		case setting_vibrate:
-			vibrateBool = tuple_new->value;
-			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate boolean: %i", tuple_new->value);
+			vibrateBool = value;
+			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate boolean: %i", value);
 			break;
 		case setting_vibrate_start:
-			vibrateStartHour = atoi(tuple_new->value);
-			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate start hour: %i", tuple_new->value);
+			vibrateStartHour = atoi(value);
+			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate start hour: %i", value);
 			break;
 		case setting_vibrate_end:
-			vibrateEndHour = atoi(tuple_new->value);
-			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate end hour: %i", tuple_new->value);
+			vibrateEndHour = atoi(value);
+			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate end hour: %i", value);
 			break;
 	}
 }
@@ -122,9 +123,9 @@ void handle_init() {
 	struct tm *t = localtime(&now);
 	
 	Tuplet tuples[] = {
-		TupletInteger(setting_screen, screen),
-		TupletInteger(setting_date, date),
-		TupletInteger(setting_vibrate, vibrate)
+		TupletInteger(setting_vibrate, vibrateBool),
+		TupletInteger(setting_vibrate_start, vibrateStartHour),
+		TupletInteger(setting_vibrate_end, vibrateEndHour)
 	};
 	app_message_open(160, 160);
 	app_sync_init(&app, buffer, sizeof(buffer), tuples, ARRAY_LENGTH(tuples),
