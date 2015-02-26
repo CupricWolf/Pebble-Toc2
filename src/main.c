@@ -8,6 +8,9 @@ Window *window;
 BitmapLayer *background_layer;
 RotBitmapLayer *minute_hand_layer, *hour_hand_layer;
 
+AppSync app;
+uint8_t buffer[256];
+
 GBitmap *background_image, *minute_hand_image, *hour_hand_image;
 
 void update_watch(struct tm *t){

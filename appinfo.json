@@ -1,7 +1,11 @@
 {
-    "appKeys": {},
+    "appKeys": {
+        "setting_vibrate": 1,
+        "setting_vibrate_end": 3,
+        "setting_vibrate_start": 2
+    },
     "capabilities": [
-        ""
+        "configurable"
     ],
     "companyName": "CupricWolf",
     "longName": "Toc for Pebble",
