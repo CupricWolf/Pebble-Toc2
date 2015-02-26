@@ -29,7 +29,28 @@ function versionCheck(uuid, version) {
 }
 
 Pebble.addEventListener('ready', function(e) {
-	versionCheck(uuid, version);
+  versionCheck(uuid, version);
+  var settings = localStorage.getItem(setPebbleToken);
+    if (typeof(settings) == 'string') {
+      console.log("Sending settings from localStorage.");
+      try {
+        Pebble.sendAppMessage(JSON.parse(settings));
+      } catch (e) {
+      }
+    }
+    var request = new XMLHttpRequest();
+    request.open('GET', 'http://x.SetPebble.com/api/' + setPebbleToken + '/' + Pebble.getAccountToken(), true);
+    request.onload = function(e) {
+      if (request.readyState == 4)
+        if (request.status == 200)
+          console.log("Sending settings from setPebbleAPI.");
+          try {
+            Pebble.sendAppMessage(JSON.parse(request.responseText));
+          } catch (e) {
+          }
+    };
+    request.send(null);
+  console.log("Settings sent.");
 });
 Pebble.addEventListener('appmessage', function(e) {
   key = e.payload.action;
