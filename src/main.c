@@ -35,11 +35,11 @@ static void tuple_changed_callback(const uint32_t key, const Tuple* tuple_new, c
 			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate boolean: %i", value);
 			break;
 		case setting_vibrate_start:
-			vibrateStartHour = atoi(value);
+			vibrateStartHour = value;
 			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate start hour: %i", value);
 			break;
 		case setting_vibrate_end:
-			vibrateEndHour = atoi(value);
+			vibrateEndHour = value;
 			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate end hour: %i", value);
 			break;
 	}
