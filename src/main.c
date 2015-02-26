@@ -27,19 +27,18 @@ void update_watch(struct tm *t){
 }
 
 static void tuple_changed_callback(const uint32_t key, const Tuple* tuple_new, const Tuple* tuple_old, void* context) {
-	int value = tuple_new->value->uint8;
 	switch (key) {
 		case setting_vibrate:
-			vibrateBool = value;
-			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate boolean: %i", value);
+			vibrateBool = tuple_new->value->uint16;
+			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate boolean: %i", tuple_new->value->uint16);
 			break;
 		case setting_vibrate_start:
-			vibrateStartHour = value;
-			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate start hour: %i", value);
+			vibrateStartHour = atoi(tuple_new->value->cstring);
+			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate start hour: %i", atoi(tuple_new->value->cstring));
 			break;
 		case setting_vibrate_end:
-			vibrateEndHour = value;
-			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate end hour: %i", value);
+			vibrateEndHour = atoi(tuple_new->value->cstring);
+			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate end hour: %i", atoi(tuple_new->value->cstring));
 			break;
 	}
 }
