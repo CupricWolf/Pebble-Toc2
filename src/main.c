@@ -1,17 +1,14 @@
 #include <pebble.h>
 
-#define HOUR_VIBRATION_START 10
-#define HOUR_VIBRATION_END 23
+enum Settings { setting_vibrate = 1, setting_vibrate_start, setting_vibrate_end };
 
 Window *window;
-
 BitmapLayer *background_layer;
 RotBitmapLayer *minute_hand_layer, *hour_hand_layer;
-
 AppSync app;
 uint8_t buffer[256];
-
 GBitmap *background_image, *minute_hand_image, *hour_hand_image;
+int vibrateBool, vibrateStartHour, vibrateEndHour;
 
 void update_watch(struct tm *t){
 
@@ -28,6 +25,27 @@ void update_watch(struct tm *t){
 	 && t->tm_hour <= HOUR_VIBRATION_END) {
 		vibes_double_pulse();
 	}
+}
+
+static void tuple_changed_callback(const uint32_t key, const Tuple* tuple_new, const Tuple* tuple_old, void* context) {
+	switch (key) {
+		case setting_vibrate:
+			vibrateBool = tuple_new->value;
+			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate boolean: %i", tuple_new->value);
+			break;
+		case setting_vibrate_start:
+			vibrateStartHour = atoi(tuple_new->value);
+			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate start hour: %i", tuple_new->value);
+			break;
+		case setting_vibrate_end:
+			vibrateEndHour = atoi(tuple_new->value);
+			APP_LOG(APP_LOG_LEVEL_DEBUG, "Vibrate end hour: %i", tuple_new->value);
+			break;
+	}
+}
+
+static void app_error_callback(DictionaryResult dict_error, AppMessageResult app_message_error, void* context) {
+	APP_LOG(APP_LOG_LEVEL_DEBUG, "app error %d", app_message_error);
 }
 
 // Called once per second
@@ -47,6 +65,10 @@ void handle_init() {
 
 	window_stack_push(window, true);
 	window_set_background_color(window, GColorBlack);
+	
+	vibrateBool = 0;
+	vibrateStartHour = 0;
+	vibrateEndHour = 23;
 
 	// Set up a layer for the static watch face background
 	background_layer = bitmap_layer_create(root_window_bounds);
@@ -98,6 +120,16 @@ void handle_init() {
 
 	time_t now = time(NULL);
 	struct tm *t = localtime(&now);
+	
+	Tuplet tuples[] = {
+		TupletInteger(setting_screen, screen),
+		TupletInteger(setting_date, date),
+		TupletInteger(setting_vibrate, vibrate)
+	};
+	app_message_open(160, 160);
+	app_sync_init(&app, buffer, sizeof(buffer), tuples, ARRAY_LENGTH(tuples),
+								tuple_changed_callback, app_error_callback, NULL);
+								
 	update_watch(t);
 
 	tick_timer_service_subscribe(MINUTE_UNIT, handle_minute_tick);
@@ -105,7 +137,7 @@ void handle_init() {
 }
 
 void handle_deinit() {
-	
+	tick_timer_service_unsubscribe();
 	rot_bitmap_layer_destroy(hour_hand_layer);
 	gbitmap_destroy(hour_hand_image);
 	rot_bitmap_layer_destroy(minute_hand_layer);
