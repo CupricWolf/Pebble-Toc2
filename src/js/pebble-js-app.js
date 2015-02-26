@@ -81,14 +81,17 @@ Pebble.addEventListener('appmessage', function (e) {
     }
 });
 Pebble.addEventListener('showConfiguration', function (e) {
+    console.log("Showing app configuration.");
     Pebble.openURL('http://x.SetPebble.com/' + setPebbleToken + '/' + Pebble.getAccountToken());
 });
 Pebble.addEventListener('webviewclosed', function (e) {
     if ((typeof(e.response) == 'string') && (e.response.length > 0)) {
+        console.log("Configuration received. Sending settings from setPebbleAPI.");
         try {
             Pebble.sendAppMessage(JSON.parse(e.response));
             localStorage.setItem(setPebbleToken, e.response);
         } catch(e) {
         }
+        
     }
 });
