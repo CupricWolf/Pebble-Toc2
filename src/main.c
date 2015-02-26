@@ -20,9 +20,8 @@ void update_watch(struct tm *t){
 	layer_mark_dirty(bitmap_layer_get_layer((BitmapLayer *)minute_hand_layer));
 	layer_mark_dirty(bitmap_layer_get_layer((BitmapLayer *)hour_hand_layer));
 	
-	if (t->tm_min == 0 // Make pebble vibrate on the hour at the top of each hour
-	 && t->tm_hour >= vibrateStartHour
-	 && t->tm_hour <= vibrateEndHour) {
+	if ((vibrateBool == 1)
+		&& (t->tm_min == 0) && (t->tm_hour >= vibrateStartHour) && (t->tm_hour <= vibrateEndHour)) {
 		vibes_double_pulse();
 	}
 }

@@ -13,13 +13,8 @@
     "resources": {
         "media": [
             {
-                "file": "images/Hour_Rotor.png",
-                "name": "IMAGE_HOUR_TRAIL",
-                "type": "png"
-            },
-            {
-                "file": "images/Background.png",
-                "name": "IMAGE_BACKGROUND",
+                "file": "images/Minute_Rotor.png",
+                "name": "IMAGE_MINUTE_TRAIL",
                 "type": "png"
             },
             {
@@ -29,8 +24,13 @@
                 "type": "png"
             },
             {
-                "file": "images/Minute_Rotor.png",
-                "name": "IMAGE_MINUTE_TRAIL",
+                "file": "images/Background.png",
+                "name": "IMAGE_BACKGROUND",
+                "type": "png"
+            },
+            {
+                "file": "images/Hour_Rotor.png",
+                "name": "IMAGE_HOUR_TRAIL",
                 "type": "png"
             }
         ]
