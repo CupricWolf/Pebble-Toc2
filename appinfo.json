@@ -13,13 +13,8 @@
     "resources": {
         "media": [
             {
-                "file": "images/Hour_Rotor.png",
-                "name": "IMAGE_HOUR_TRAIL",
-                "type": "png"
-            },
-            {
-                "file": "images/Background.png",
-                "name": "IMAGE_BACKGROUND",
+                "file": "images/Minute_Rotor.png",
+                "name": "IMAGE_MINUTE_TRAIL",
                 "type": "png"
             },
             {
@@ -29,12 +24,18 @@
                 "type": "png"
             },
             {
-                "file": "images/Minute_Rotor.png",
-                "name": "IMAGE_MINUTE_TRAIL",
+                "file": "images/Background.png",
+                "name": "IMAGE_BACKGROUND",
+                "type": "png"
+            },
+            {
+                "file": "images/Hour_Rotor.png",
+                "name": "IMAGE_HOUR_TRAIL",
                 "type": "png"
             }
         ]
     },
+    "sdkVersion": "2",
     "shortName": "Toc Pebble",
     "uuid": "0a88492a-12b6-4c72-8bd5-6e01993f0a58",
     "versionCode": 2,
