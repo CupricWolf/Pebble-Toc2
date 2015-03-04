@@ -24,11 +24,6 @@
                 "type": "png"
             },
             {
-                "file": "images/Background.png",
-                "name": "IMAGE_BACKGROUND",
-                "type": "png"
-            },
-            {
                 "file": "images/Hour_Rotor.png",
                 "name": "IMAGE_HOUR_TRAIL",
                 "type": "png"

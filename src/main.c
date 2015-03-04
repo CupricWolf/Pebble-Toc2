@@ -3,11 +3,10 @@
 enum Settings { setting_vibrate = 1, setting_vibrate_start, setting_vibrate_end };
 
 Window *window;
-BitmapLayer *background_layer;
 RotBitmapLayer *minute_hand_layer, *hour_hand_layer;
 AppSync app;
 uint8_t buffer[256];
-GBitmap *background_image, *minute_hand_image, *hour_hand_image;
+GBitmap *minute_hand_image, *hour_hand_image;
 int vibrateBool, vibrateStartHour, vibrateEndHour;
 
 void update_watch(struct tm *t){
@@ -60,7 +59,6 @@ void handle_init() {
 	// Create our app's base window
 	window = window_create();
 	Layer *root_window_layer = window_get_root_layer(window);
-	GRect root_window_bounds = layer_get_bounds(root_window_layer);
 
 	window_stack_push(window, true);
 	window_set_background_color(window, GColorBlack);
@@ -68,12 +66,6 @@ void handle_init() {
 	vibrateBool = 0;
 	vibrateStartHour = 0;
 	vibrateEndHour = 23;
-
-	// Set up a layer for the static watch face background
-	background_layer = bitmap_layer_create(root_window_bounds);
-	background_image = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND);
-	bitmap_layer_set_bitmap(background_layer, background_image);
-	layer_add_child(root_window_layer, bitmap_layer_get_layer(background_layer));
 
 	// Set up a layer for the minute hand.
 	// Compositing tricks take the place of PNG transparency.
@@ -141,8 +133,6 @@ void handle_deinit() {
 	gbitmap_destroy(hour_hand_image);
 	rot_bitmap_layer_destroy(minute_hand_layer);
 	gbitmap_destroy(minute_hand_image);
-	gbitmap_destroy(background_image);
-	bitmap_layer_destroy(background_layer);
 	window_destroy(window);
 
 }
